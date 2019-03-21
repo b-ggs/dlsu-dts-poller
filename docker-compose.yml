@@ -1,0 +1,19 @@
+version: "3.5"
+
+services:
+  poller: &poller
+    build: .
+    image: bxggs/dlsu-dts-poller
+    command: ["docker-start", "poller-start"]
+    env_file: env
+    volumes:
+      - bundle-data:/bundle
+      - .:/app
+    stdin_open: true
+    tty: true
+  discord_listener:
+    <<: *poller
+    command: ["docker-start", "discord-listener-start"]
+
+volumes:
+  bundle-data:

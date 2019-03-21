@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ "$1" == "docker-start" ]; then
+  shift
+
+  cd $APP_DIR
+
+  bundle check || bundle install --binstubs="$BUNDLE_BIN"
+
+  if [ "$1" == "poller-start" ]; then
+    shift
+
+    bundle exec ruby poller.rb
+  elif [ "$1" == "discord-listener-start" ]; then
+    shift
+
+    bundle exec ruby discord_listener.rb
+  fi
+fi
+
+exec "$@"
