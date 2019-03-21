@@ -21,6 +21,8 @@ class Formatter
     end
 
     <<~MESSAGE
+    **Update as of #{Time.now.to_s}**
+
     #{payload}
     **Sent by:** #{src}
     **Will sleep for:** #{will_sleep_for}
