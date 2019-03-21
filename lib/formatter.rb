@@ -1,5 +1,5 @@
 class Formatter
-  def self.run(data, src = __FILE__)
+  def self.run(data, src = __FILE__, will_sleep_for = 'N/A, triggered by Discord bot')
     payload = ''
 
     if data[:success]
@@ -23,6 +23,7 @@ class Formatter
     <<~MESSAGE
     #{payload}
     **Sent by:** #{src}
+    **Will sleep for:** #{will_sleep_for}
     MESSAGE
   end
 end

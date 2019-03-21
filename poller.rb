@@ -25,7 +25,7 @@ while true do
   log("Will sleep for #{sleep_time}")
 
   data = Runner.run
-  formatted = Formatter.run(data, __FILE__)
+  formatted = Formatter.run(data, __FILE__, sleep_time)
 
   # puts formatted
   client = Discordrb::Webhooks::Client.new(url: ENV['DISCORD_WEBHOOK_URL'])
