@@ -19,6 +19,8 @@ while true do
   sleep_time =
     if time_int >= SHORT_POLL_START && time_int < SHORT_POLL_START + SHORT_POLL_DURATION
       SHORT_POLL_INTERVAL
+    elsif time_int + REGULAR_POLL_INTERVAL > SHORT_POLL_START
+      SHORT_POLL_START - time_int
     else
       REGULAR_POLL_INTERVAL
     end
